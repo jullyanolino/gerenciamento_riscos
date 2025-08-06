@@ -34,3 +34,12 @@ altair==5.1.2
 psycopg2-binary==2.9.9  # Para PostgreSQL
 python-dotenv==1.0.0
 ```
+### Instalação:
+``` bash
+pip install -r requirements.txt
+```
+
+## Execução
+``` bash
+streamlit run app.py
+```
