@@ -3,7 +3,7 @@
 ## Estrutura do Projeto
 
 ```
-risk_management/
+gerenciamento_riscos/
 ├── app.py                 # Aplicação principal
 ├── auth/
 │   ├── authenticator.py   # Lógica de autenticação
