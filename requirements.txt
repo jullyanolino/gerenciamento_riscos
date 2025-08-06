@@ -1,19 +1,10 @@
-# Interface web e autenticação
-streamlit>=1.28.0,<2.0.0  # Framework para a aplicação web, versão estável
-streamlit-authenticator>=0.2.3,<0.3.0  # Autenticação de usuários
-msal>=1.24.0,<2.0.0  # Microsoft Authentication Library para Azure AD
-msal-streamlit>=0.1.9,<0.2.0  # Integração do MSAL com Streamlit
-
-# Banco de dados
-sqlalchemy>=2.0.23,<3.0.0  # ORM para manipulação de banco de dados
-psycopg2-binary>=2.9.9,<3.0.0  # Conector para PostgreSQL
-
-# Manipulação e visualização de dados
-pandas>=2.1.3,<3.0.0  # Manipulação de dados em DataFrames
-plotly>=5.17.0,<6.0.0  # Gráficos interativos para dashboard
-
-# Geração de relatórios
-reportlab>=4.0.7,<5.0.0  # Geração de relatórios em PDF
-
-# Utilitários
-python-dotenv>=1.0.0,<2.0.0  # Carregamento de variáveis de ambiente
+streamlit>=1.28.0,<2.0.0
+streamlit-authenticator>=0.2.3,<0.3.0
+msal>=1.24.0,<2.0.0
+msal-streamlit>=0.1.9,<0.2.0
+sqlalchemy>=2.0.23,<3.0.0
+psycopg2-binary>=2.9.9,<3.0.0
+pandas>=2.1.3,<3.0.0
+plotly>=5.17.0,<6.0.0
+reportlab>=4.0.7,<5.0.0
+python-dotenv>=1.0.0,<2.0.0
