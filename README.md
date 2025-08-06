@@ -1,4 +1,4 @@
-# Ferrameta de Gerenciamento de Riscos
+# Ferramenta de Gerenciamento de Riscos
 
 ## Estrutura do Projeto
 
