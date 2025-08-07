@@ -9,7 +9,8 @@ def generate_pdf_report(df):
     """
     Gera um relatório em PDF com os dados dos riscos.
     Argumentos:
-        df (pandas.DataFrame): DataFrame com colunas 'ID', 'Descrição', 'Probabilidade', 'Impacto', 'Categoria', 'Plano de Mitigação'.
+        df (pandas.DataFrame): DataFrame com colunas 'id', 'titulo_evento', 'probabilidade', 
+                              'impacto', 'categoria', 'resposta_adotada', 'criticidade'.
     Retorna:
         BytesIO: Buffer com o conteúdo do PDF.
     """
