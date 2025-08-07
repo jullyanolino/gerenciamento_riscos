@@ -49,6 +49,11 @@ python-dotenv>=1.0.0,<2.0.0  # Carregamento de variáveis de ambiente
 pip install -r requirements.txt
 ```
 
+## Popular Banco de Dados
+``` bash
+python -c "from database.connection import seed_database; seed_database()"
+```
+
 ## Execução
 ``` bash
 streamlit run app.py
