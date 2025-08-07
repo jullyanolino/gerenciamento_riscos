@@ -44,7 +44,7 @@ reportlab>=4.0.7,<5.0.0  # Geração de relatórios em PDF
 # Utilitários
 python-dotenv>=1.0.0,<2.0.0  # Carregamento de variáveis de ambiente
 ```
-### Instalação:
+### Instalação das Dependências:
 ``` bash
 pip install -r requirements.txt
 ```
