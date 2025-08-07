@@ -1,5 +1,12 @@
 import streamlit as st
 from auth.azure_ad import HybridAuthenticator, create_environment_config
+from database.connection import init_database, get_session
+from database.models import Usuario
+from database.crud import UsuarioCRUD
+from datetime import datetime
+
+# Inicializar banco de dados
+init_database()
 
 # Configuração inicial do Streamlit
 st.set_page_config(
@@ -8,6 +15,42 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+def sync_user_with_db(user_info, session):
+    """
+    Sincroniza informações do usuário autenticado com a tabela usuarios.
+    Argumentos:
+        user_info (dict): Informações do usuário do Azure AD ou autenticação local.
+        session (Session): Sessão do banco de dados.
+    """
+    if not user_info:
+        return
+    
+    username = user_info.get('username')
+    email = user_info.get('email')
+    name = user_info.get('name')
+    role = user_info.get('role', 'user')
+    
+    # Verificar se usuário existe no banco
+    usuario = session.query(Usuario).filter_by(username=username).first()
+    if not usuario:
+        usuario_data = {
+            'username': username,
+            'email': email,
+            'nome_completo': name,
+            'role': role,
+            'criado_em': datetime.now(),
+            'criado_por_id': 1  # Admin padrão
+        }
+        usuario = UsuarioCRUD.criar_usuario(session, usuario_data)
+    else:
+        # Atualizar informações, se necessário
+        usuario.email = email
+        usuario.nome_completo = name
+        usuario.role = role
+        usuario.atualizado_em = datetime.now()
+    
+    session.commit()
 
 def main():
     # Carregar configurações de autenticação
@@ -28,6 +71,10 @@ def main():
     name, username, auth_status = auth.check_authentication()
     
     if auth_status:
+        # Sincronizar usuário com banco
+        with get_session() as session:
+            sync_user_with_db(auth.get_user_info(), session)
+        
         # Usuário autenticado
         user_info = auth.get_user_info()
         
